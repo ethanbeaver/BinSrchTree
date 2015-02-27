@@ -409,6 +409,16 @@ char BinSrchTree::miniMenu(bool isMiniMenu)
     return choice;
 }
 
+/*               ,@@@@@@@,
+       ,,,.   ,@@@@@@/@@,  .oo8888o.
+    ,&%%&%&&%,@@@@@/@@@@@@,8888\88/8o
+   ,%&\%&&%&&%,@@@\@@@/@@@88\88888/88'
+   %&&%&%&/%&&%@@\@@/ /@@@88888\88888'
+   %&&%/ %&%%&&@@\ V /@@' `88\8 `/88'
+   `&%\ ` /%&'    |.|        \ '|8'
+       |o|        | |         | |
+       |.|        | |         | |
+jgs \\/ ._\//_/__/  ,\_//__\\/.  \_//__/_*/
 //This function was created by Ryan Rabello for the Lists assignment. It was edited to include this assignment's functions.
 //This is a nice welcome menu, along with the case statements for handling each of the potential menu choices
 int BinSrchTree::menu()
