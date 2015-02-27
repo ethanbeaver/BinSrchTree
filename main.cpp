@@ -186,7 +186,7 @@ void BinSrchTree::deleteNode(int data)
         }
         else if((p2->lson==NULL)||(p2->rson==NULL))
         {
-            if(p1->lson = p2)
+            if(p1->lson==p2)
             {
                 if(p2->lson==NULL)
                 {
@@ -201,11 +201,21 @@ void BinSrchTree::deleteNode(int data)
             {
                 if(p2->lson==NULL)
                 {
-                    p1->rson = p2->rson;
+                    if(p1==p2)
+                    {
+                        T = p2->rson;
+                    }
+                    else
+                        p1->rson = p2->rson;
                 }
                 else
                 {
-                    p1->rson = p2->lson;
+                    if(p1==p2)
+                    {
+                        T = p2->lson;
+                    }
+                    else
+                        p1->rson = p2->lson;
                 }
             }
             delete p2;
@@ -397,7 +407,7 @@ int main()
     BinSrchTree a;
     a.inOrder();
     a.postOrder();
-    int n;
+    int n,r;
     cout << "Enter how many integers you would like to enter into the tree: ";
     cin >> n;
     for(int i=1; i<=n; i++)
@@ -410,4 +420,14 @@ int main()
     a.postOrder();
     cout << endl;
     a.levelOrder();
+    cout << endl;
+    cout << "Enter a number of numbers to delete: ";
+    cin >> n;
+    for(int i=1; i<=n; i++)
+    {
+    cout << "Enter a number to delete: ";
+    cin >> r;
+    a.deleteNode(r);
+    }
+    a.inOrder();
 }
