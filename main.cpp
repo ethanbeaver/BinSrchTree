@@ -1,3 +1,30 @@
+/*****************************************************************************
+ Program file name:main.cpp	OS:Windows 8.1		Assignment #:8
+ ProgrammerRyan Rabello, Matthew Fennel, Ethan Beaver	Class: 	Data Struct. I			Date:2/27/15
+ Compiler:GNU GCC
+ 
+ Assistance/references:
+ Description:Read Writes and deletes from trees. 
+ Inputs: Integers
+ Outputs: Integers
+ 
+ Special Comments:Homework Menu option has some sample output that goes with the assignment paper.  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~Grading Criteria~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Assignment Requirements ___/3.0
+
+ Code Format/Cosmetics ___/3.0
+
+ Header & Code Comments: ___/2.0
+
+ Output Format/Cosmetics ___/2.0
+ ***Does Not Compile***: ___ (-10.0)
+ ***Late Work Deduction***: ___ (-0.5/day)
+ Total Grade: ___/10.0
+
+*****************************************************************************/
+
 #include <iostream>
 #include "Queues.cpp"
 #include "Stacks.cpp"
