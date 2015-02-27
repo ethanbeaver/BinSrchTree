@@ -24,8 +24,6 @@ public:
     void insertNode();
     void insertNode(int);
     void deleteNode(int);
-    void preOrder(node*);
-    void preOrder();
     void inOrder(node*);
     void inOrder();
     void postOrder(node*);
@@ -34,6 +32,8 @@ public:
     void levelOrder();
     void clearTree(node*);
     void clearTree();
+    char miniMenu(bool);
+    int menu();
 };
 
 BinSrchTree::BinSrchTree()
@@ -235,28 +235,6 @@ void BinSrchTree::deleteNode(int data)
     }
 }
 
-void BinSrchTree::preOrder(node *p)
-{
-    if (p!=NULL)
-    {
-        cout << p->data << " " ;
-        inOrder(p->lson);
-        inOrder(p->rson);
-    }
-}
-
-void BinSrchTree::preOrder()
-{
-    if (T==NULL)
-    {
-        cout << "Tree empty.\n";
-    }
-    else
-    {
-        preOrder(T);
-    }
-}
-
 void BinSrchTree::inOrder(node *p)
 {
     if (p!=NULL)
@@ -311,7 +289,7 @@ void BinSrchTree::postOrder(node *p)
                 }
                 break;
             case 3:
-                cout << p->data;
+                cout << p->data << " ";
                 break;
             default:
             cerr << "There is a nasty error here\n";
@@ -392,22 +370,145 @@ void BinSrchTree::clearTree()
     T = NULL;
 }
 
+//This function was created by Ryan Rabello for the Lists assignment. It was edited to include this assignment's functions.
+char BinSrchTree::miniMenu(bool isMiniMenu)
+//A menu that prints options, and takes the user's choice
+{
+    char choice;
+    if (isMiniMenu){
+    cout << endl << "What would you like to do?" << endl;
+    cout << endl;
+    cout << "\t1) Build a binary search tree." << endl;
+    cout << "\t2) Traverse the tree using InOrder." << endl;
+    cout << "\t3) Traverse the tree using LevelOrder." << endl;
+    cout << "\t4) Traverse the tree using PostOrder." << endl;
+    cout << "\t5) Delete a specific node." << endl;
+    cout << "\t6) Clear the tree." << endl;
+    cout << "\t7) Run the case specified in the homework." << endl;
+    cout << endl << "\t0) Quit." << endl;
+    }
+    else
+    {
+        cout << "\n\n1)Build\t\t2)InOrder\t3)LevelOrder\t4)PostOrder\t5)Delete\t\t6)Clear\t\t7)HWCase\n";
+    }
+    cout << endl;
+    cout << ">>>";
+    //choice = getchar();
+    cin >> choice;
+    cout << endl;
+    return choice;
+}
+
+//This function was created by Ryan Rabello for the Lists assignment. It was edited to include this assignment's functions.
+//This is a nice welcome menu, along with the case statements for handling each of the potential menu choices
+int BinSrchTree::menu()
+{
+
+    char option = NULL;
+    bool printMenu = true;
+    cout << " _    _  ____  __    ___  _____  __  __  ____  \n"
+    <<"( \\/\\/ )( ___)(  )  / __)(  _  )(  \\/  )( ___)\n"
+    <<" )    (  )__)  )(__( (__  )(_)(  )    (  )__) \n"
+    <<"(__/\\__)(____)(____)\\___)(_____)(_/\\/\\_)(____)\n";
+
+    while(option!='0')
+    {
+        option = miniMenu(printMenu);
+        switch(option)
+        {
+            case '0': cout << "Goodbye"; break;
+            case '1':
+                int n;
+                cout << "Enter how many integers you would like to enter into the tree: ";
+                cin >> n;
+                for(int i=1; i<=n; i++)
+                    {
+                        fillNode();
+                        insertNode();
+                    }
+                printMenu = false;
+                break;
+            case '2': inOrder(); printMenu = false; break;
+            case '3': levelOrder(); printMenu = false; break;
+            case '4': postOrder(); printMenu = false; break;
+            case '5':
+                int del;
+                cout << "Please enter the data value of the node you would like to delete.";
+                cin >> del;
+                deleteNode(del);
+                printMenu = false;
+                break;
+            case '6': clearTree(); printMenu = false; break;
+            case '7':
+                cout << "Executing the homework case." << endl;
+                int p;
+                cout << "Enter how many integers you would like to enter into the tree: ";
+                cin >> p;
+                for(int i=1; i<=p; i++)
+                    {
+                        fillNode();
+                        insertNode();
+                    }
+                inOrder();
+                cout << endl;
+                postOrder();
+                cout << endl;
+                levelOrder();
+                cout << endl;
+                int m;
+                cout << "Enter how many integers you would like to enter into the subtree: ";
+                cin >> m;
+                if (m<p)
+                {
+                    Stack<int> mNodes(m);
+                    for(int i=1; i<=m; i++)
+                    {
+                        fillNode();
+                        mNodes.push(ptr->data);
+                        insertNode();
+                    }
+                    cout << "Nodes inserted. Displaying inOrder." << endl;
+                    inOrder();
+                    cout << endl;
+                    cout << "Deleting inserted nodes." << endl;
+                    while(!mNodes.empty())
+                    {
+                        deleteNode(mNodes.pop());
+                    }
+                }
+                else
+                    {
+                    cout << "The subbranch of the tree must be smaller than the original branch." << endl;
+                    cout << "Skipping insertion and deletion." << endl;
+                    }
+                cout << "Displaying current tree." << endl;
+                inOrder();
+                cout << endl;
+                postOrder();
+                cout << endl;
+                levelOrder();
+                cout << endl;
+                cout << "Clearing tree." << endl;
+                clearTree();
+                cout << "Displaying cleared tree." << endl;
+                inOrder();
+                cout << endl;
+                postOrder();
+                cout << endl;
+                levelOrder();
+                cout << endl;
+                break;
+            default : cerr << "\nERROR: '" << option << "' is not a valid menu option.\n\n"; printMenu = true; break;
+        }
+    }
+    return(0);
+}
+
 int main()
 {
     BinSrchTree a;
-    a.inOrder();
-    a.postOrder();
-    int n;
-    cout << "Enter how many integers you would like to enter into the tree: ";
-    cin >> n;
-    for(int i=1; i<=n; i++)
-    {
-        a.fillNode();
-        a.insertNode();
-    }
-    a.inOrder();
-    cout << endl;
-    a.postOrder();
-    cout << endl;
-    a.levelOrder();
+   a.menu();
+
 }
+
+
