@@ -21,6 +21,8 @@ public:
     bool search(int);
     void insertNode();
     void deleteNode(int);
+    void preOrder(node*);
+    void preOrder();
     void inOrder(node*);
     void inOrder();
     void postOrder(node*);
@@ -190,6 +192,28 @@ void BinSrchTree::deleteNode(int data)
                 delete r;
             }
         }
+    }
+}
+
+void BinSrchTree::preOrder(node *p)
+{
+    if (p!=NULL)
+    {
+        cout << p->data << " " ;
+        inOrder(p->lson);
+        inOrder(p->rson);
+    }
+}
+
+void BinSrchTree::preOrder()
+{
+    if (T==NULL)
+    {
+        cout << "Tree empty.\n";
+    }
+    else
+    {
+        preOrder(T);
     }
 }
 
