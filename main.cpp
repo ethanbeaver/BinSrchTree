@@ -17,9 +17,11 @@ private:
 public:
     BinSrchTree();
     void fillNode();
+    void fillNode(int);
     bool search();
     bool search(int);
     void insertNode();
+    void insertNode(int);
     void deleteNode(int);
     void preOrder(node*);
     void preOrder();
@@ -45,6 +47,14 @@ void BinSrchTree::fillNode()
     cout << "Enter a value: ";
     cin >> value;
     ptr->data = value;
+    ptr->lson = ptr->rson = NULL;
+}
+
+void BinSrchTree::fillNode(int data)
+{
+    int value;
+    ptr = new node;
+    ptr->data = data;
     ptr->lson = ptr->rson = NULL;
 }
 
@@ -109,6 +119,35 @@ void BinSrchTree::insertNode()
         if (T == NULL)
         {
          T = ptr;
+        }
+        else
+        {
+         if (ptr->data < p1->data)
+         {
+             p1->lson = ptr;
+         }
+         else if (ptr->data > p1->data)
+         {
+             p1->rson = ptr;
+         }
+         else
+         {
+             cout << ptr->data << " already in the tree\n";
+         }
+        }
+    }
+    else
+        cout << ptr->data << " already in the tree\n";
+}
+
+void BinSrchTree::insertNode(int data)
+{
+    fillNode(data);
+    if (search(data) == false)
+    {
+        if (T == NULL)
+        {
+            T = ptr;
         }
         else
         {
