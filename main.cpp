@@ -409,16 +409,7 @@ char BinSrchTree::miniMenu(bool isMiniMenu)
     return choice;
 }
 
-/*               ,@@@@@@@,
-       ,,,.   ,@@@@@@/@@,  .oo8888o.
-    ,&%%&%&&%,@@@@@/@@@@@@,8888\88/8o
-   ,%&\%&&%&&%,@@@\@@@/@@@88\88888/88'
-   %&&%&%&/%&&%@@\@@/ /@@@88888\88888'
-   %&&%/ %&%%&&@@\ V /@@' `88\8 `/88'
-   `&%\ ` /%&'    |.|        \ '|8'
-       |o|        | |         | |
-       |.|        | |         | |
-jgs \\/ ._\//_/__/  ,\_//__\\/.  \_//__/_*/
+
 //This function was created by Ryan Rabello for the Lists assignment. It was edited to include this assignment's functions.
 //This is a nice welcome menu, along with the case statements for handling each of the potential menu choices
 int BinSrchTree::menu()
@@ -426,7 +417,16 @@ int BinSrchTree::menu()
 
     char option = NULL;
     bool printMenu = true;
-    cout << " _    _  ____  __    ___  _____  __  __  ____  \n"
+    cout <<"            ,@@@@@@@,\n"
+    <<"    ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
+    <<" ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
+   <<",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"
+   <<"%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n"
+   <<"%&&%/ %&%%&&@@\\ \V /@@' `88\\8 `/88'\n"
+   <<"`&%\\ ` /%&'    |.|        \\ '|8'\n"
+   <<"    |o|        | |         | |\n"
+   <<"    |.|        | |         | |\n"
+   <<" _\\/ ._\\/____ /__ \\_//__\\\\/___\\_//__/_*/ ____\n"
     <<"( \\/\\/ )( ___)(  )  / __)(  _  )(  \\/  )( ___)\n"
     <<" )    (  )__)  )(__( (__  )(_)(  )    (  )__) \n"
     <<"(__/\\__)(____)(____)\\___)(_____)(_/\\/\\_)(____)\n";
@@ -436,7 +436,12 @@ int BinSrchTree::menu()
         option = miniMenu(printMenu);
         switch(option)
         {
-            case '0': cout << "Goodbye"; break;
+            case '0': cout << "  _____             ____\n"
+                << " / ___/__  ___  ___/ / /  __ _____ \n"
+                << "/ (_ / _ \\/ _ \\/ _  / _ \\/ // / -_)\n"
+                << "\\___/\\___/\\___/\\_,_/_.__/\\_, /\\__/ \n"
+                << "                        /___/      \n";
+            break;
             case '1':
                 int n;
                 cout << "Enter how many integers you would like to enter into the tree: ";
