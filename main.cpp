@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Queues.cpp"
+#include "Stacks.cpp"
 
 using namespace std;
 
@@ -280,11 +281,38 @@ void BinSrchTree::inOrder()
 
 void BinSrchTree::postOrder(node *p)
 {
-    if (p!=NULL)
+    int tagdata;
+    Stack<node*> a;
+    Stack<int> tag;
+    a.push(p);
+    tag.push(1);
+    while(a.top!=NULL)
     {
-        inOrder(p->lson);
-        inOrder(p->rson);
-	cout << p->data << " " ;
+        p = a.pop();
+        tagdata = tag.pop();
+        switch(tagdata)
+        {
+            case 1:
+                a.push(p);
+                tag.push(2);
+                if(p->lson==NULL)
+                a.push(p->lson);
+                tag.push(1);
+                break;
+            case 2:
+                a.push(p);
+                tag.push(3);
+                if(p->rson==NULL);
+                a.push(p->rson);
+                tag.push(1);
+                break;
+            case 3:
+                cout << p->data;
+                break;
+            default:
+            cerr << "There is a nasty error here\n";
+            break;
+        }
     }
 }
 
@@ -300,13 +328,13 @@ void BinSrchTree::postOrder()
     }
 }
 
-/*void BinSrchTree::levelOrder(node *p)
+void BinSrchTree::levelOrder(node *p)
 {
-    Queue<int>a(256);
+    Queue<node*>a(256);
     if(p!=NULL)
     {
         a.clearQ();
-        a.addQ(p->data);
+        a.addQ(p);
     }
     while(!a.emptyQ())
     {
@@ -334,7 +362,7 @@ void BinSrchTree::levelOrder()
     {
         levelOrder(T);
     }
-}*/
+}
 
 void BinSrchTree::clearTree(node *p)
 {
@@ -375,8 +403,5 @@ int main()
     }
     a.inOrder();
     cout << endl;
-    cout << "Enter the number would you like to delete from the tree: ";
-    cin >> n;
-    a.deleteNode(n);
-    a.inOrder();
+    a.postOrder();
 }
