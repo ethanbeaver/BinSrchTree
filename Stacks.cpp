@@ -12,8 +12,8 @@ template <class T>
 class Stack{
     private:
         T *stk;
-        int top, size;
     public:
+        int top, size;
         Stack(void);
         Stack(int);
         bool empty(void);
