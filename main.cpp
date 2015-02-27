@@ -282,11 +282,11 @@ void BinSrchTree::inOrder()
 void BinSrchTree::postOrder(node *p)
 {
     int tagdata;
-    Stack<node*> a;
-    Stack<int> tag;
+    Stack<node*> a(30);
+    Stack<int> tag(30);
     a.push(p);
     tag.push(1);
-    while(a.top!=NULL)
+    while(!a.empty() && !tag.empty())
     {
         p = a.pop();
         tagdata = tag.pop();
@@ -295,16 +295,20 @@ void BinSrchTree::postOrder(node *p)
             case 1:
                 a.push(p);
                 tag.push(2);
-                if(p->lson==NULL)
-                a.push(p->lson);
-                tag.push(1);
+                if(p->lson!=NULL)
+                {
+                    a.push(p->lson);
+                    tag.push(1);
+                }
                 break;
             case 2:
                 a.push(p);
                 tag.push(3);
-                if(p->rson==NULL);
-                a.push(p->rson);
-                tag.push(1);
+                if(p->rson!=NULL)
+                {
+                    a.push(p->rson);
+                    tag.push(1);
+                }
                 break;
             case 3:
                 cout << p->data;
@@ -338,8 +342,9 @@ void BinSrchTree::levelOrder(node *p)
     }
     while(!a.emptyQ())
     {
-        cout << a.delQ() << " ";
+        p = a.delQ();
         cout << p->data << " ";
+
         if(p->lson!=NULL)
         {
             a.addQ(p->lson);
@@ -348,7 +353,6 @@ void BinSrchTree::levelOrder(node *p)
         {
             a.addQ(p->rson);
         }
-        break;
     }
 }
 
@@ -404,4 +408,6 @@ int main()
     a.inOrder();
     cout << endl;
     a.postOrder();
+    cout << endl;
+    a.levelOrder();
 }
