@@ -61,8 +61,6 @@ public:
     void output5Q();
     void outputFullQ();
     void outputClearedQ();
-    char miniMenu(bool);
-    int menu();
 
 };
 
@@ -386,68 +384,3 @@ void Queue <T>::outputClearedQ()
 
 }
 
-//This function was created by Ryan Rabello for the Lists assignment. It was edited to include this assignment's functions.
-template <class T>
-char Queue<T>::miniMenu(bool isMiniMenu)
-//A menu that prints options, and takes the user's choice
-{
-    char choice;
-    if (isMiniMenu){
-    cout << endl << "What would you like to do?" << endl;
-    cout << endl;
-    cout << "\t1) Grow and Shrink your Queue." << endl;
-    cout << "\t2) Test for Queue wraparound." << endl;
-    cout << "\t3) Grow the queue until an overflow occurs." << endl;
-    cout << "\t4) Shrink the Queue until an underflow occurs." << endl;
-    cout << "\t5) Set and output a 1 element Queue"<< endl;
-    cout << "\t6) Set and output a 5 element Queue." << endl;
-    cout << "\t7) Set and output a full Queue." << endl;
-    cout << "\t8) Clear and reset a Queue." << endl;
-    cout << "\t9) Print the Queue." << endl;
-    cout << endl << "\t0) Quit." << endl;
-    }
-    else
-    {
-        cout << "\n\n1)Grow/Shrink\t2)Wrap\t3)Over\t4)Under\t\t5)1Q\t\t6)5Q\t\t7)Full\t\t8)Reset\t\t9)Print\n";
-    }
-    cout << endl;
-    cout << ">>>";
-    //choice = getchar();
-    cin >> choice;
-    cout << endl;
-    return choice;
-}
-
-//This function was created by Ryan Rabello for the Lists assignment. It was edited to include this assignment's functions.
-//This is a nice welcome menu, along with the case statements for handling each of the potential menu choices
-template <class T>
-int Queue<T>::menu()
-{
-
-    char option = NULL;
-    bool printMenu = true;
-    cout << " _    _  ____  __    ___  _____  __  __  ____  \n"
-    <<"( \\/\\/ )( ___)(  )  / __)(  _  )(  \\/  )( ___)\n"
-    <<" )    (  )__)  )(__( (__  )(_)(  )    (  )__) \n"
-    <<"(__/\\__)(____)(____)\\___)(_____)(_/\\/\\_)(____)\n";
-
-    while(option!='0')
-    {
-        option = miniMenu(printMenu);
-        switch(option)
-        {
-            case '0': cout << "Goodbye"; break;
-            case '1': clearQ(); growShrinkQ(); printMenu = false; break;
-            case '2': clearQ(); wrapQ(); printMenu = false; break;
-            case '3': clearQ(); growTilOverflowQ(); printMenu = false; break;
-            case '4': clearQ(); shrinkTilUnderflowQ(); printMenu = false; break;
-            case '5': clearQ(); output1Q(); printMenu = false; break;
-            case '6': clearQ(); output5Q(); printMenu = false; break;
-            case '7': clearQ(); outputFullQ(); printMenu = false; break;
-            case '8': clearQ(); outputClearedQ(); printMenu = false; break;
-            case '9': cout << endl; writeQ(); printMenu = false; break;
-            default : cerr << "\nERROR: '" << option << "' is not a valid menu option.\n\n"; printMenu = true; break;
-        }
-    }
-    return(0);
-}
