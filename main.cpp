@@ -8,7 +8,7 @@
  Inputs: Integers
  Outputs: Integers
  
- Special Comments:Homework Menu option has some sample output that goes with the assignment paper.  
+ Special Comments:Homework Menu option# 7 has some sample output that goes with the assignment paper.  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~Grading Criteria~~~~~~~~~~~~~~~~~~~~~~~~~~
 
