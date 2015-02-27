@@ -1,14 +1,14 @@
 /*****************************************************************************
- Program file name:main.cpp	OS:Windows 8.1		Assignment #:8
+ Program file name:main.cpp	OS: Ubuntu 14.04		Assignment #:8
  ProgrammerRyan Rabello, Matthew Fennel, Ethan Beaver	Class: 	Data Struct. I			Date:2/27/15
  Compiler:GNU GCC
- 
+
  Assistance/references:
- Description:Read Writes and deletes from trees. 
+ Description:Read Writes and deletes from trees.
  Inputs: Integers
  Outputs: Integers
- 
-Special Comments: Menu option# 7 - Homework Case - has output that does what the assignment paper requires.  
+
+Special Comments: Menu option# 7 - Homework Case - has output that does what the assignment paper requires.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~Grading Criteria~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -69,7 +69,7 @@ BinSrchTree::BinSrchTree()
     T = NULL;
 }
 
-//Gives *ptr the data that it prompts for. 
+//Gives *ptr the data that it prompts for.
 void BinSrchTree::fillNode()
 {
     int value;
@@ -89,7 +89,7 @@ void BinSrchTree::fillNode(int data)
     ptr->lson = ptr->rson = NULL;
 }
 
-//Searches the tree for data in ptr returns bool if (or not) found. This also aligns the p1 and p2 pointers. 
+//Searches the tree for data in ptr returns bool if (or not) found. This also aligns the p1 and p2 pointers.
 bool BinSrchTree::search()
 {
     bool found = false;
@@ -117,7 +117,7 @@ bool BinSrchTree::search()
     return found;
 }
 
-//Searches the tree for data pasted to it returns bool if (or not) found. This also aligns the p1 and p2 pointers. 
+//Searches the tree for data pasted to it returns bool if (or not) found. This also aligns the p1 and p2 pointers.
 bool BinSrchTree::search(int data)
 {
     bool found = false;
@@ -145,7 +145,7 @@ bool BinSrchTree::search(int data)
     return found;
 }
 
-//Inserts the node ptr with it's data into tree. 
+//Inserts the node ptr with it's data into tree.
 void BinSrchTree::insertNode()
 {
     if (search() == false)
@@ -174,7 +174,7 @@ void BinSrchTree::insertNode()
         cout << ptr->data << " already in the tree\n";
 }
 
-//overload function inserts node with pasted data into tree. 
+//overload function inserts node with pasted data into tree.
 void BinSrchTree::insertNode(int data)
 {
     fillNode(data);
@@ -204,8 +204,8 @@ void BinSrchTree::insertNode(int data)
         cout << ptr->data << " already in the tree\n";
 }
 
-//uses search to find node. Then seperates out into three different cases and then about 4 more cases. 
-//It eventualy deletes the node in a way that preserves the bianary treeness. 
+//uses search to find node. Then seperates out into three different cases and then about 4 more cases.
+//It eventualy deletes the node in a way that preserves the bianary treeness.
 void BinSrchTree::deleteNode(int data)
 {
     if(!search(data))
@@ -237,7 +237,7 @@ void BinSrchTree::deleteNode(int data)
             {
                 if(p2->lson==NULL)
                 {
-                    //We had to add this special condition for trees that had two nodes. 
+                    //We had to add this special condition for trees that had two nodes.
                     if(p1==p2)
                     {
                         T = p2->rson;
@@ -247,7 +247,7 @@ void BinSrchTree::deleteNode(int data)
                 }
                 else
                 {
-                    //This is the above code's counterpart. 
+                    //This is the above code's counterpart.
                     if(p1==p2)
                     {
                         T = p2->lson;
@@ -307,7 +307,7 @@ void BinSrchTree::inOrder()
     }
 }
 
-//Outputs the tree in PostOrder. Function is overloaded. 
+//Outputs the tree in PostOrder. Function is overloaded.
 void BinSrchTree::postOrder(node *p)
 {
     int tagdata;
@@ -349,7 +349,7 @@ void BinSrchTree::postOrder(node *p)
     }
 }
 
-//Outputs the tree in PostOrder. Function is overloaded. 
+//Outputs the tree in PostOrder. Function is overloaded.
 void BinSrchTree::postOrder()
 {
     if (T==NULL)
@@ -362,7 +362,7 @@ void BinSrchTree::postOrder()
     }
 }
 
-////Outputs the tree in levelorder. Function is overloaded. 
+////Outputs the tree in levelorder. Function is overloaded.
 void BinSrchTree::levelOrder(node *p)
 {
     Queue<node*>a(256);
@@ -387,7 +387,7 @@ void BinSrchTree::levelOrder(node *p)
     }
 }
 
-//Outputs the tree in levelOrder. Function is overloaded. 
+//Outputs the tree in levelOrder. Function is overloaded.
 void BinSrchTree::levelOrder()
 {
     if (T==NULL)
@@ -400,8 +400,8 @@ void BinSrchTree::levelOrder()
     }
 }
 
-//This is a quick and dirty solution to clearing the tree. 
-//by Clearing the two link feilds you render the rest of the tree blank. 
+//This is a quick and dirty solution to clearing the tree.
+//by Clearing the two link feilds you render the rest of the tree blank.
 void BinSrchTree::clearTree(node *p)
 {
     if(p!=NULL)
@@ -444,7 +444,7 @@ char BinSrchTree::miniMenu(bool isMiniMenu)
     cout << "\t7) Run the case specified in the homework." << endl;
     cout << endl << "\t0) Quit." << endl;
     }
-    //if they have already seen the menu it prints the mini menue. As follows. 
+    //if they have already seen the menu it prints the mini menue. As follows.
     else
     {
         cout << "\n\n1)Build\t\t2)InOrder\t3)LevelOrder\t4)PostOrder\t5)Delete\t\t6)Clear\t\t7)HWCase\n";
